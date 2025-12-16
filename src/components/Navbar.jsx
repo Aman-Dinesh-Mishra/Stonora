@@ -13,16 +13,25 @@ const navItems = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userInitial, setUserInitial] = useState("");
   const location = useLocation();
 
   useEffect(() => {
-    setIsAuthenticated(!!localStorage.getItem("auth"));
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    if (user && user.email) {
+      setIsAuthenticated(true);
+      setUserInitial(user.email.charAt(0).toUpperCase());
+    } else {
+      setIsAuthenticated(false);
+      setUserInitial("");
+    }
   }, [location]);
 
   const handleLogout = () => {
     localStorage.removeItem("auth");
     localStorage.removeItem("currentUser");
     setIsAuthenticated(false);
+    setUserInitial("");
   };
 
   const whatsappLink = (phone) => `https://wa.me/${phone}`;
@@ -32,7 +41,6 @@ export default function Navbar() {
       {navItems.map(({ label, href, isWhatsApp, phoneNumber }) => {
         const baseClasses =
           "transition-colors duration-200 focus:outline-none focus-visible:ring-2";
-
         const normalClasses = isMobile
           ? "block text-white hover:text-richGold"
           : "hover:text-richGold";
@@ -71,6 +79,7 @@ export default function Navbar() {
           <img src={logo} alt="Stonora Logo" className="h-10 md:h-12" />
         </Link>
 
+        {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden focus-visible:ring-2 focus-visible:ring-richGold"
@@ -78,6 +87,7 @@ export default function Navbar() {
           {open ? "✕" : "☰"}
         </button>
 
+        {/* Desktop menu */}
         <ul className="hidden md:flex space-x-6 items-center">
           <MenuItems isMobile={false} />
 
@@ -91,10 +101,11 @@ export default function Navbar() {
           ) : (
             <div className="relative group">
               <button className="w-10 h-10 rounded-full bg-richGold text-deepForest font-semibold">
-                A
+                {userInitial}
               </button>
 
-              <div className="absolute right-0 mt-2 w-40 bg-white text-deepForest rounded-xl shadow-lg hidden group-hover:block">
+              {/* Dropdown */}
+              <div className="absolute right-0 mt-2 w-40 bg-white text-deepForest rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50">
                 <Link
                   to="/profile"
                   className="block px-4 py-2 hover:bg-gray-100"
@@ -113,6 +124,7 @@ export default function Navbar() {
         </ul>
       </div>
 
+      {/* Mobile menu */}
       {open && (
         <ul className="md:hidden space-y-3 px-4 pb-4">
           <MenuItems isMobile={true} />

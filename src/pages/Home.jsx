@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Added
+import { useNavigate } from "react-router-dom";
 
-import pest from "../assets/pest.png";
-import car from "../assets/washing.png";
-import ac from "../assets/ac.png";
-import electric from "../assets/electric.png";
-import plumbing from "../assets/plumbing.png";
-import cleaning from "../assets/dusting.png";
+import pest from "../assets/pest.webp";
+import car from "../assets/washing.webp";
+import ac from "../assets/ac.webp";
+import electric from "../assets/electric.webp";
+import plumbing from "../assets/plumbing.webp";
+import cleaning from "../assets/dusting.webp";
 
 const services = [
   { title: "Pest Control", img: pest, price: "From ₹299" },
@@ -77,6 +77,10 @@ export default function Home() {
               <img
                 src={s.img}
                 alt={s.title}
+                width="1200"
+                height="800"
+                loading={i === current ? "eager" : "lazy"}
+                fetchPriority={i === current ? "high" : "auto"}
                 className="w-full h-full object-cover"
               />
 
@@ -90,7 +94,10 @@ export default function Home() {
                       {s.price}
                     </p>
                   </div>
-                  <button className="bg-richGold text-deepForest px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-600 hover:shadow-lg hover:shadow-yellow-500/25 transition-all duration-300">
+                  <button
+                    aria-label={`Subscribe to ${s.title}`}
+                    className="bg-richGold text-deepForest px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-600 hover:shadow-lg hover:shadow-yellow-500/25 transition-all duration-300"
+                  >
                     Subscribe
                   </button>
                 </div>
