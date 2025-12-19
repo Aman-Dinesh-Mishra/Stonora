@@ -19,55 +19,29 @@ export default function App() {
       <Router>
         <Navbar />
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Home />
-                <Suspense fallback={null}>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Home />
                   <Service />
                   <Hero />
-                </Suspense>
-                <Footer />
-              </>
-            }
-          />
+                </>
+              }
+            />
 
-          <Route
-            path="/about"
-            element={
-              <Suspense fallback={null}>
-                <AboutUs />
-                <Footer />
-              </Suspense>
-            }
-          />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signin" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </Suspense>
 
-          <Route
-            path="/services"
-            element={
-              <Suspense fallback={null}>
-                <Services />
-                <Footer />
-              </Suspense>
-            }
-          />
-
-          <Route
-            path="/how-it-works"
-            element={
-              <Suspense fallback={null}>
-                <HowItWorks />
-                <Footer />
-              </Suspense>
-            }
-          />
-
-          <Route path="/login" element={<Login />} />
-          <Route path="/signin" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
+        <Footer />
       </Router>
     </div>
   );

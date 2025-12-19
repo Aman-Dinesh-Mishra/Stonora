@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import {
   FaFacebookF,
@@ -22,10 +23,10 @@ export default function Footer() {
   ];
 
   const quickLinks = [
-    { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
-    { label: "Services", href: "/services" },
-    { label: "How It Works", href: "/how-it-works" },
+    { label: "Home", to: "/" },
+    { label: "About Us", to: "/about" },
+    { label: "Services", to: "/services" },
+    { label: "How It Works", to: "/how-it-works" },
   ];
 
   const services = [
@@ -38,20 +39,14 @@ export default function Footer() {
   ];
 
   return (
-    <footer
-      className="bg-richGold text-deepForest font-inter pt-14 pb-5"
-      role="contentinfo"
-    >
+    <footer className="bg-richGold text-deepForest font-inter pt-14 pb-5">
       <div className="max-w-7xl mx-auto px-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        {/* Logo & Info */}
         <div>
           <img
             src={logo}
             alt="Stonora Logo"
-            width="192"
-            height="64"
-            loading="lazy"
             className="w-48 mb-4"
+            loading="lazy"
           />
 
           <p className="font-poppins text-lg leading-relaxed">
@@ -74,47 +69,44 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Quick Links */}
-        <nav aria-label="Footer navigation">
+        <nav>
           <h3 className="text-xl font-semibold mb-3 font-poppins">
             Quick Links
           </h3>
           <ul className="space-y-2">
-            {quickLinks.map(({ label, href }) => (
-              <li key={href}>
-                <a
-                  href={href}
+            {quickLinks.map(({ label, to }) => (
+              <li key={to}>
+                <Link
+                  to={to}
                   className="hover:underline hover:text-black transition text-lg"
                 >
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </nav>
 
-        {/* Services */}
         <div>
           <h3 className="text-xl font-semibold mb-3 font-poppins">
             Our Services
           </h3>
           <ul className="space-y-2">
             {services.map((service) => (
-              <li key={service} className="hover:text-black transition text-lg">
+              <li key={service} className="text-lg hover:text-black transition">
                 {service}
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Contact */}
         <address className="not-italic">
           <h3 className="text-xl font-semibold mb-3 font-poppins">
             Contact Us
           </h3>
           <ul className="space-y-3 text-base font-poppins">
-            <li className="flex items-start gap-3">
-              <FaMapMarkerAlt className="text-lg mt-1" aria-hidden="true" />
+            <li className="flex gap-3">
+              <FaMapMarkerAlt className="mt-1" />
               <span>
                 Mira Road, Gaurav Valley,
                 <br />
@@ -122,20 +114,20 @@ export default function Footer() {
               </span>
             </li>
 
-            <li className="flex items-center gap-3">
-              <FaCar className="text-lg" aria-hidden="true" />
+            <li className="flex gap-3">
+              <FaCar />
               <span>On-Site Car Service Available</span>
             </li>
 
-            <li className="flex items-center gap-3">
-              <FaPhone className="text-lg" aria-hidden="true" />
+            <li className="flex gap-3">
+              <FaPhone />
               <a href="tel:+919890003000" className="hover:underline">
                 +91 98900 03000
               </a>
             </li>
 
-            <li className="flex items-center gap-3">
-              <FaEnvelope className="text-lg" aria-hidden="true" />
+            <li className="flex gap-3">
+              <FaEnvelope />
               <a
                 href="mailto:official.stonora@gmail.com"
                 className="hover:underline"
@@ -147,16 +139,15 @@ export default function Footer() {
         </address>
       </div>
 
-      {/* Bottom Strip */}
       <div className="text-center border-t border-deepForest mt-10 pt-4 text-sm font-poppins">
         © 2025 Stonora. All rights reserved. |{" "}
-        <a href="/privacy-policy" className="hover:underline">
+        <Link to="/privacy-policy" className="hover:underline">
           Privacy Policy
-        </a>{" "}
+        </Link>{" "}
         |{" "}
-        <a href="/terms-of-service" className="hover:underline">
+        <Link to="/terms-of-service" className="hover:underline">
           Terms of Service
-        </a>
+        </Link>
       </div>
     </footer>
   );
