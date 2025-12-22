@@ -10,6 +10,15 @@ import {
 } from "react-icons/fa";
 
 export default function HowItWorks() {
+  const PHONE_NUMBER = "919890003000";
+
+  const handleGetStarted = () => {
+    window.open(
+      `https://wa.me/${PHONE_NUMBER}?text=Hi! I'm ready to get started with Stonora services.`,
+      "_blank"
+    );
+  };
+
   const steps = [
     {
       number: "01",
@@ -119,7 +128,10 @@ export default function HowItWorks() {
               <p className="text-2xl font-black bg-gradient-to-r from-richGold to-yellow-500 bg-clip-text text-transparent mb-6">
                 {offer.price}
               </p>
-              <div className="w-28 h-10 bg-gradient-to-r from-richGold to-yellow-500 text-deepForest rounded-xl flex items-center justify-center font-bold text-sm shadow-lg group-hover:shadow-xl group-hover:shadow-yellow-500/30 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <div
+                className="w-28 h-10 bg-gradient-to-r from-richGold to-yellow-500 text-deepForest rounded-xl flex items-center justify-center font-bold text-sm shadow-lg group-hover:shadow-xl group-hover:shadow-yellow-500/30 hover:scale-105 transition-all duration-300 cursor-pointer"
+                onClick={handleGetStarted}
+              >
                 Get Now
               </div>
             </div>
@@ -132,7 +144,10 @@ export default function HowItWorks() {
         <FaClock className="w-16 h-16 text-richGold/40 mx-auto mb-8" />
         <h2 className="text-3xl font-black mb-6 text-white">Ready to start?</h2>
         <p className="text-lg text-gray-500 mb-10">Join 50K+ customers.</p>
-        <div className="group inline-flex bg-gradient-to-r from-richGold to-yellow-500 text-deepForest px-10 py-4 rounded-2xl text-lg font-black shadow-xl hover:shadow-2xl hover:shadow-yellow-500/40 hover:scale-105 hover:from-yellow-400 hover:to-yellow-600 transition-all duration-300 cursor-pointer">
+        <div
+          className="group inline-flex bg-gradient-to-r from-richGold to-yellow-500 text-deepForest px-10 py-4 rounded-2xl text-lg font-black shadow-xl hover:shadow-2xl hover:shadow-yellow-500/40 hover:scale-105 hover:from-yellow-400 hover:to-yellow-600 transition-all duration-300 cursor-pointer"
+          onClick={handleGetStarted}
+        >
           Book First Service
         </div>
       </div>

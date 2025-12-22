@@ -38,44 +38,50 @@ const reasons = [
 
 function WhyChooseStonoraMarquee(props) {
   return (
-    <section
-      className="bg-deepForest text-white py-14 px-4"
-      aria-label="Why Choose Stonora Marquee"
-    >
+    <section className="bg-deepForest py-14 px-4">
       <div className="max-w-6xl mx-auto mb-8 text-center">
         <h2 className="text-richGold text-4xl font-bold mb-2">
           Why Choose Stonora?
         </h2>
-        <p className="text-lg text-white/90">
+        <p className="text-[#2D2D2D]/80">
           We solve the problems that matter most to homeowners
         </p>
       </div>
+
       <Marquee
         {...props}
         gradient={false}
         speed={60}
-        className="marquee-container w-full overflow-visible"
         pauseOnHover
+        className="w-full overflow-visible"
       >
         {reasons.map(({ icon, problem, solution }, i) => (
-          <div
-            key={i}
-            className="flex-shrink-0 bg-white rounded-xl p-6 shadow-lg mr-8 min-w-[320px] max-w-xs flex flex-col"
-          >
-            <div className="mb-4">{icon}</div>
-            <div className="text-sm text-red-900 font-bold flex items-center gap-1 mb-1">
-              <span aria-hidden="true" className="text-base"></span> PROBLEM
+          <div key={i} className="flex-shrink-0 mr-8 min-w-[320px] max-w-xs">
+            <div
+              className="
+                h-full rounded-2xl p-6
+                bg-[#F6F1E8]
+                shadow-lg
+                transition-all duration-300
+                hover:-translate-y-2 hover:shadow-xl
+              "
+            >
+              <div className="mb-4">{icon}</div>
+
+              {/* PROBLEM */}
+              <div className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-2 bg-red-100 text-red-700">
+                PROBLEM
+              </div>
+              <p className="mb-4 font-medium text-[#2D2D2D]">{problem}</p>
+
+              <hr className="h-px bg-[#2D2D2D]/20 border-0 mb-4" />
+
+              {/* SOLUTION */}
+              <div className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-2 bg-green-100 text-green-700">
+                OUR SOLUTION
+              </div>
+              <p className="font-bold text-richGold">{solution}</p>
             </div>
-            <p className="mb-4 text-gray-800 font-medium">{problem}</p>
-            <hr className="h-px bg-gray-300 border-0 mb-4" />
-            <div className="text-sm text-green-900 font-bold flex items-center gap-1 mb-1">
-              <span
-                aria-hidden="true"
-                className="text-green-400 text-base"
-              ></span>{" "}
-              OUR SOLUTION
-            </div>
-            <p className="font-bold text-richGold">{solution}</p>
           </div>
         ))}
       </Marquee>

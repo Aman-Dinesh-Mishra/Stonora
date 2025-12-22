@@ -86,7 +86,7 @@ export default function AboutUs() {
       <section className="bg-[#00251a] py-20 px-6 text-center">
         <h2 className="text-4xl font-bold mb-8">Our Story</h2>
 
-        <div className="max-w-3xl mx-auto space-y-4 text-[#D59E43]">
+        <div className="max-w-3xl mx-auto space-y-4 text-[#D59E43] text-justify">
           <p>
             Stonora was created because home services shouldn’t be complicated,
             expensive, or time-consuming.

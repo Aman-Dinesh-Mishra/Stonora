@@ -140,14 +140,8 @@ export default function Footer() {
       </div>
 
       <div className="text-center border-t border-deepForest mt-10 pt-4 text-sm font-poppins">
-        © 2025 Stonora. All rights reserved. |{" "}
-        <Link to="/privacy-policy" className="hover:underline">
-          Privacy Policy
-        </Link>{" "}
-        |{" "}
-        <Link to="/terms-of-service" className="hover:underline">
-          Terms of Service
-        </Link>
+        © 2025 Stonora. All rights reserved. | <span>Privacy Policy</span> |{" "}
+        <span>Terms of Service</span>
       </div>
     </footer>
   );

@@ -116,13 +116,20 @@ const faqs = [
 export default function Services() {
   const [openIndex, setOpenIndex] = useState(null);
 
+  const handleGetStarted = () => {
+    window.open(
+      "https://wa.me/919890003000?text=Hi! I want to book a service.",
+      "_blank"
+    );
+  };
+
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
     <div className="bg-deepForest text-richGold">
-      {/* ================= Our Services ================= */}
+      {/* Our Services */}
       <section className="py-20 bg-richGold text-deepForest text-center">
         <h1 className="text-5xl font-bold mb-4">Our Services</h1>
         <p className="text-lg mb-6">
@@ -133,7 +140,7 @@ export default function Services() {
         </p>
       </section>
 
-      {/* ================= Service Cards ================= */}
+      {/*Service Cards*/}
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-7xl text-center">
           <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-3">
@@ -173,7 +180,7 @@ export default function Services() {
                   <p className="font-bold text-xl text-richGold mb-3">
                     {service.price}
                   </p>
-                  <Button text="Get Started" />
+                  <Button text="Get Started" onClick={handleGetStarted} />
                 </div>
               </article>
             ))}
@@ -214,7 +221,7 @@ export default function Services() {
         </p>
 
         <div className="mt-10 flex justify-center">
-          <Button text="Get Started" />
+          <Button text="Get Started" onClick={handleGetStarted} />
         </div>
       </section>
 
